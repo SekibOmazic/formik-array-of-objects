@@ -1,11 +1,14 @@
 import React, { FC } from "react";
 import "./App.css";
-import { OKR1 } from "./OKR1";
+//import { OKR1 } from "./OKR1";
+import { OKR } from "./okr/OKR";
+import { ObjectiveStatus } from "./types";
 
 const App: FC = () => {
   const objective = {
     name: "Sekib",
     amount: 500,
+    status: ObjectiveStatus.Proposal,
     keyResults: [
       {
         title: "Learn React hooks",
@@ -20,21 +23,8 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <OKR1 objective={objective} />
+      {/* <OKR1 objective={objective} /> */}
+      <OKR objective={objective} />
     </div>
   );
 };
