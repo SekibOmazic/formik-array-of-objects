@@ -8,7 +8,7 @@ const App: FC = () => {
   const objective = {
     name: "Sekib",
     amount: 500,
-    status: ObjectiveStatus.Proposal,
+    status: ObjectiveStatus.Approved,
     keyResults: [
       {
         title: "Learn React hooks",

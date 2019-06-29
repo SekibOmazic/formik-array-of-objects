@@ -70,7 +70,7 @@ export const KeyResults: FC<Props> = ({ objective, errors }) => {
                   completed={keyResult.completed}
                   nameTitle={`keyResults.${index}.title`}
                   title={keyResult.title}
-                  deletable={objective.status === ObjectiveStatus.Proposal}
+                  editable={objective.status === ObjectiveStatus.Proposal}
                   remove={() => arrayHelpers.remove(index)}
                 />
               ))}

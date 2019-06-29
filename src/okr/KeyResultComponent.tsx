@@ -7,7 +7,7 @@ export const KeyResultComponent = ({
   nameCompleted,
   title,
   completed,
-  deletable,
+  editable,
   remove
 }) => {
   return (
@@ -26,11 +26,11 @@ export const KeyResultComponent = ({
         <Field
           name={nameTitle}
           value={title}
-          disabled={!deletable}
+          disabled={!editable}
           component={Input}
         />
       </div>
-      {deletable && (
+      {editable && (
         <button
           type="button"
           className="bg-transparent pa0 bn pointer"
