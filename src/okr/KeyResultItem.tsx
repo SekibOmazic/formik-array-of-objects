@@ -2,7 +2,7 @@ import React from "react";
 import { Field } from "formik";
 import { Input } from "./Input";
 
-export const KeyResultComponent = ({
+export const KeyResultItem = ({
   nameTitle,
   nameCompleted,
   title,

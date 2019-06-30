@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { FieldArray, FormikErrors } from "formik";
 import { Objective, ObjectiveStatus } from "../types";
-import { KeyResultComponent } from "./KeyResultComponent";
+import { KeyResultItem } from "./KeyResultItem";
+import { NewKeyResult } from "./NewKeyResult";
 
 interface Props {
   objective: Objective;
@@ -16,6 +17,8 @@ export const KeyResults: FC<Props> = ({ objective, errors }) => {
           100
       )
     : 0;
+
+  const editable = objective.status === ObjectiveStatus.Proposal;
 
   return (
     <div className="mb4">
@@ -33,58 +36,23 @@ export const KeyResults: FC<Props> = ({ objective, errors }) => {
           render={arrayHelpers => (
             <div>
               {objective.keyResults.map((keyResult, index) => (
-                // <div key={`keyResult-${index}`}>
-                //   <li className="flex justify-between mb3">
-                //     <div className={"pa3 flex w-100"}>
-                //       <Field name={`keyResults.${index}.completed`}>
-                //         {({ field }) => (
-                //           <input
-                //             type="checkbox"
-                //             className={"mr3"}
-                //             {...field}
-                //             checked={keyResult.completed}
-                //           />
-                //         )}
-                //       </Field>
-                //       <Field
-                //         name={`keyResults.${index}.title`}
-                //         value={keyResult.title}
-                //         component={Input}
-                //       />
-                //     </div>
-                //     <button
-                //       type="button"
-                //       className="bg-transparent pa0 bn pointer"
-                //       onClick={() => arrayHelpers.remove(index)}
-                //     >
-                //       <span role="img" aria-label="remove">
-                //         ❌
-                //       </span>
-                //     </button>
-                //   </li>
-                // </div>
-
-                <KeyResultComponent
+                <KeyResultItem
                   key={index}
                   nameCompleted={`keyResults.${index}.completed`}
                   completed={keyResult.completed}
                   nameTitle={`keyResults.${index}.title`}
                   title={keyResult.title}
-                  editable={objective.status === ObjectiveStatus.Proposal}
+                  editable={editable}
                   remove={() => arrayHelpers.remove(index)}
                 />
               ))}
 
-              {objective.status === ObjectiveStatus.Proposal && (
-                <button
-                  type="button"
-                  className="bg-light-gray pv2 ph3 bn br2"
-                  onClick={() =>
-                    arrayHelpers.push({ title: "", completed: false })
-                  }
-                >
-                  Add
-                </button>
+              {editable && (
+                <NewKeyResult
+                  add={title => {
+                    arrayHelpers.push({ title, completed: false });
+                  }}
+                />
               )}
             </div>
           )}
