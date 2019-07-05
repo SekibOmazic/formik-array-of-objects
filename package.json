@@ -11,6 +11,7 @@
     "formik": "^1.5.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-modal": "^3.8.2",
     "react-scripts": "3.0.1",
     "typescript": "3.5.2",
     "use-onclickoutside": "^0.3.1",

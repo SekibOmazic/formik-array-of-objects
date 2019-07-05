@@ -7,13 +7,16 @@ import { ObjectiveComponent } from "./ObjectiveComponent";
 
 interface Props {
   objective: Objective;
+  close: () => void;
 }
 
-export const OKR: FC<Props> = ({ objective }) => (
+export const OKR: FC<Props> = ({ objective, close }) => (
   <div className="sans-serif dark-gray pa3">
+    <button onClick={close}>x</button>
     <section className="mw7 center pa4 bg-near-white">
       <Formik
         initialValues={objective}
+        // enableReinitialize={true}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -73,8 +76,8 @@ export const OKR: FC<Props> = ({ objective }) => (
                 </button>
               </footer>
 
-              <pre>{JSON.stringify(values, null, 2)}</pre>
-              <pre>{JSON.stringify(errors, null, 2)}</pre>
+              {/* <pre>{JSON.stringify(values, null, 2)}</pre>
+              <pre>{JSON.stringify(errors, null, 2)}</pre> */}
             </form>
           );
         }}
